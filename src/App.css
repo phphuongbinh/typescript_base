@@ -1,0 +1,12 @@
+.reviews {
+  width: 400px;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.reviews-image img {
+  width: 100%;
+  object-fit: cover;
+}
