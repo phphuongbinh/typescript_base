@@ -2,6 +2,8 @@
 //     return a + b
 // }
 
+import { ProductNewFeatures } from "./interfaces";
+
 // total(5,7)
 
 // const age : number = 25;
@@ -18,17 +20,31 @@
 //     aNumber.toFixed(2)
 // }
 
-function raiseError(err: string) : never {
-    throw new Error(err)
-}
+// function raiseError(err: string) : never {
+//     throw new Error(err)
+// }
 
-console.log(raiseError);
+// console.log(raiseError);
 
-const loop = function forever(){
-    // eslint-disable-next-line no-constant-condition
-    while (true) {
-        console.log('Hello');
+// const loop = function forever(){
+//     // eslint-disable-next-line no-constant-condition
+//     while (true) {
+//         console.log('Hello');
         
-    }
+//     }
+// }
+// console.log(loop);
+
+const product : ProductNewFeatures = {
+    name: "car",
+    brand: "bmw",
+    color: "Red"
 }
-console.log(loop);
+
+console.log(product);
+
+function addProduct(product: ProductNewFeatures) {
+        console.log(product);
+        
+}
+addProduct(product)
