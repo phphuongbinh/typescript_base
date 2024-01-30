@@ -2,7 +2,6 @@
 import "./App.css";
 import Card from "./components/Card";
 import { Permission } from "./utils/enums";
-import { total } from "./utils/functions";
 const reviews: {
   name: string;
   stars: number;
@@ -99,8 +98,6 @@ function App() {
     permission: Permission.ADMIN,
   };
   console.log(users);
-  console.log(total(5, 7));
-  console.log(total("5", "7"));
 
   return (
     <>

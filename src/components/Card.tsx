@@ -1,6 +1,9 @@
 import { ICart } from "../utils/interfaces";
 
 const Card = ({ title, description, image, link }: ICart) => {
+  const input = document.querySelector("input") as HTMLInputElement;
+  console.log(input.value);
+
   return (
     <div>
       <h1>{title}</h1>
