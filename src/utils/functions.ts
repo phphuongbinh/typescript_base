@@ -79,7 +79,7 @@ const format = (title: string, desc: string, amount : string | number) : string 
 format("Erauqs", "Developer", 40)
 format("Erauqs", "Developer", "40")
 
-// ** Avoid function
+// ** void function
 function contact(email: string, phone:number) : void {
     console.log(email, phone);
 }

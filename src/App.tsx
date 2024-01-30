@@ -2,6 +2,7 @@
 import "./App.css";
 import Card from "./components/Card";
 import { Permission } from "./utils/enums";
+import { simpleUseState } from "./utils/tuple";
 const reviews: {
   name: string;
   stars: number;
@@ -65,6 +66,11 @@ type Age = 18 | 25 | 30;
 
 function App() {
   // const [count, setCount] = useState(0)
+  const [valueStr, setValueStr] = simpleUseState("ErauQs");
+  console.log(valueStr);
+  setValueStr("binh");
+  console.log(valueStr);
+
   function displayReviewInfo(
     name: string,
     totalReview: number,
