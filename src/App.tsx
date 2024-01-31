@@ -1,7 +1,8 @@
 // import { useState } from 'react'
 import "./App.css";
-import { ranker } from "./utils/generics";
-import { devices, getDevicesKeys } from "./utils/generic-keyof";
+import { updateTodo } from "./utils/utilitys";
+// import { ranker } from "./utils/generics";
+// import { devices, getDevicesKeys } from "./utils/generic-keyof";
 // const reviews: {
 //   name: string;
 //   stars: number;
@@ -63,9 +64,9 @@ import { devices, getDevicesKeys } from "./utils/generic-keyof";
 
 // type Age = 18 | 25 | 30;
 
-console.log(ranker([1, 2, 3, 4, 5], (number) => number * 5));
-console.log(getDevicesKeys(devices, "name"));
-
+console.log(
+  updateTodo({ title: "Learn Javascript", description: "6 month" }, {})
+);
 function App() {
   // const [count, setCount] = useState(0)
   // const [valueStr, setValueStr] = simpleUseState("ErauQs");
