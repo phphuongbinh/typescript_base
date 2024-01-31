@@ -1,6 +1,7 @@
 // import { useState } from 'react'
 import "./App.css";
 import { ranker } from "./utils/generics";
+import { devices, getDevicesKeys } from "./utils/generic-keyof";
 // const reviews: {
 //   name: string;
 //   stars: number;
@@ -63,6 +64,7 @@ import { ranker } from "./utils/generics";
 // type Age = 18 | 25 | 30;
 
 console.log(ranker([1, 2, 3, 4, 5], (number) => number * 5));
+console.log(getDevicesKeys(devices, "name"));
 
 function App() {
   // const [count, setCount] = useState(0)
