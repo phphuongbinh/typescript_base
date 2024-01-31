@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // in : Kiểm tra key ở trong obj có tồn tại hay không?
 
 // typeof : Trả ra các type ở trong properties
