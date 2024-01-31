@@ -8,9 +8,9 @@ add3DCoordinate([12, 124, 45], [124, 546, 23])
 
 // useState with Typescript
 
-export function simpleUseState(val: string) : [string, (v:string)=> void] {
+export function simpleUseState(val: string) : [()=> string, (v:string)=> void] {
     return [
-        val,
+        ()=> val,
         (v: string)=> {
             val = v
             console.log(val);
@@ -19,6 +19,6 @@ export function simpleUseState(val: string) : [string, (v:string)=> void] {
     ]
 }
 
-const [valueStr, setValueStr] = simpleUseState("ErauQs")
-console.log(valueStr)
-setValueStr("Binh")
+const [stringGetter, stringSetter] = simpleUseState("ErauQs")
+console.log(stringGetter)
+stringSetter("Binh")
