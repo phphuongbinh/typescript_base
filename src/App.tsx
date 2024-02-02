@@ -26,15 +26,15 @@ const App = () => {
   return (
     <div className="p-5">
       <Heading title="Todo App"></Heading>
-      <List
+      {/* <List
         items={["Javascript", "Html", "Css", "React"]}
         onClickItem={(item) => onClickItem(item)}
       ></List>
       <Boxded>
         <div>ABC</div>
-      </Boxded>
+      </Boxded> */}
       <div className="max-w-sm">
-        <div className="flex flex-col mb-5 gap-y-2">
+        {/* <div className="flex flex-col mb-5 gap-y-2">
           {todos.map((todo) => (
             <div className="flex items-center gap-x-3" key={todo.id}>
               <span>{todo.text}</span>
@@ -46,7 +46,21 @@ const App = () => {
               </button>
             </div>
           ))}
-        </div>
+        </div> */}
+        <RenderList
+          items={todos}
+          render={(todo) => (
+            <div className="flex items-center gap-x-3" key={todo.id}>
+              <span>{todo.text}</span>
+              <button
+                onClick={() => onRemoveTodo(todo.id)}
+                className="p-2 text-sm text-white bg-red-500 rounded-lg "
+              >
+                Remove
+              </button>
+            </div>
+          )}
+        ></RenderList>
         <div className="flex items-center gap-x-5">
           <input
             type="text"
@@ -61,6 +75,20 @@ const App = () => {
           </button>
         </div>
       </div>
+    </div>
+  );
+};
+// Thêm dấu "," để phân biệt Generic với <Tag>
+const RenderList = <T,>({
+  items,
+  render,
+}: {
+  items: T[];
+  render: (items: T) => React.ReactNode;
+}) => {
+  return (
+    <div className="flex flex-col mb-5 gap-y-2">
+      {items.map((item) => render(item))}
     </div>
   );
 };
