@@ -75,6 +75,14 @@ const App = () => {
             Add todo
           </button>
         </div>
+        <Button
+          type="button"
+          disabled
+          className="p-3 text-white bg-red-500 rounded-lg"
+        >
+          Buy now
+        </Button>
+        <Input type="text" placeholder="Text"></Input>
       </div>
     </div>
   );
@@ -117,8 +125,29 @@ const List = ({
   );
 };
 
-// Children
+// HTMLDetailProps
 
+type ButtonProps = {
+  children: React.ReactNode;
+} & React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
+
+const Button = ({ children, ...rest }: ButtonProps) => {
+  return <button {...rest}>{children}</button>;
+};
+
+type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+
+const Input = (rest: InputProps) => {
+  return <input {...rest} />;
+};
+
+// Children
 const Boxded = ({ children }: { children?: React.ReactNode }) => {
   return <div>{children}</div>;
 };
