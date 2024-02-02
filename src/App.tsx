@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useReducer, useRef } from "react";
+import { Children, useEffect, useReducer, useRef, useState } from "react";
 
 const Heading = ({ title }: { title: string }) => {
   return <h2 className="mb-5 text-2xl font-bold">{title}</h2>;
@@ -33,6 +33,10 @@ const todoReducer = (state: Todo[], action: ActionType) => {
 
 const initialValue: Todo[] = [];
 
+interface Data {
+  text: string;
+}
+
 const App = () => {
   const [todos, dispatch] = useReducer(todoReducer, initialValue);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -50,9 +54,26 @@ const App = () => {
       });
     }
   };
+  const [data, setData] = useState<Data | null>(null);
+  useEffect(() => {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((result) => setData(result));
+  }, []);
+
+  const onClickItem = (item: string) => {
+    alert(item);
+  };
   return (
     <div className="p-5">
       <Heading title="Todo App"></Heading>
+      <List
+        items={["Javascript", "Html", "Css", "React"]}
+        onClickItem={(item) => onClickItem(item)}
+      ></List>
+      <Boxded>
+        <div>ABC</div>
+      </Boxded>
       <div className="max-w-sm">
         <div className="flex flex-col mb-5 gap-y-2">
           {todos.map((todo) => (
@@ -83,6 +104,31 @@ const App = () => {
       </div>
     </div>
   );
+};
+
+const List = ({
+  items,
+  onClickItem,
+}: {
+  items: string[];
+  onClickItem?: (item: string) => void;
+}) => {
+  return (
+    <div>
+      {items.map((item) => (
+        // Optional Chaning
+        <div key={item} onClick={() => onClickItem?.(item)}>
+          {item}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// Children
+
+const Boxded = ({ children }: { children?: React.ReactNode }) => {
+  return <div>{children}</div>;
 };
 
 export default App;
