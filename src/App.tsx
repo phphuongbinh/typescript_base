@@ -48,6 +48,7 @@ const App = () => {
           ))}
         </div> */}
         <RenderList
+          keyExtractor={(todo) => todo.id}
           items={todos}
           render={(todo) => (
             <div className="flex items-center gap-x-3" key={todo.id}>
@@ -82,14 +83,18 @@ const App = () => {
 const RenderList = <T,>({
   items,
   render,
+  keyExtractor,
 }: {
   items: T[];
   render: (items: T) => React.ReactNode;
+  keyExtractor: (item: T) => number;
 }) => {
   return (
-    <div className="flex flex-col mb-5 gap-y-2">
-      {items.map((item) => render(item))}
-    </div>
+    <ul className="flex flex-col mb-5 gap-y-2">
+      {items.map((item, index) => (
+        <li key={index}>{render(item)}</li>
+      ))}
+    </ul>
   );
 };
 
