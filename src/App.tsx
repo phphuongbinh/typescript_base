@@ -1,59 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Children, useEffect, useReducer, useRef, useState } from "react";
+import useTodos from "./hooks/useTodos";
 
 const Heading = ({ title }: { title: string }) => {
   return <h2 className="mb-5 text-2xl font-bold">{title}</h2>;
 };
-
-type ActionType =
-  | { type: "ADD"; text: string }
-  | { type: "REMOVE"; id: number };
-
-interface Todo {
-  id: number;
-  text: string;
-}
-const todoReducer = (state: Todo[], action: ActionType) => {
-  switch (action.type) {
-    case "ADD":
-      return [
-        ...state,
-        {
-          id: state.length,
-          text: action.text,
-        },
-      ];
-    case "REMOVE":
-      return state.filter((todo: Todo) => todo.id !== action.id);
-    default:
-      throw new Error("");
-  }
-};
-
-const initialValue: Todo[] = [];
 
 interface Data {
   text: string;
 }
 
 const App = () => {
-  const [todos, dispatch] = useReducer(todoReducer, initialValue);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const onRemoveTodo = (todoId: number) => {
-    dispatch({
-      type: "REMOVE",
-      id: todoId,
-    });
-  };
-  const onAddTodo = () => {
-    if (inputRef.current) {
-      dispatch({
-        type: "ADD",
-        text: inputRef.current.value,
-      });
-    }
-  };
+  const { todos, onAddTodo, onRemoveTodo, inputRef } = useTodos([]);
   const [data, setData] = useState<Data | null>(null);
   useEffect(() => {
     fetch("/data.json")
